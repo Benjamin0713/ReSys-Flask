@@ -12,10 +12,17 @@
 #     genres = db.Column(db.String(255), nullable=False)
 #
 #
+# 查询所有movie信息
 # @app.route('/movie/getall')
 # def get_movie():
 #     movie = Movies.query.all()
-#     for m in  movie:
-#         print(1)
-#
-#     return "查询所有电影信息"
+#     # return "查询所有电影信息"
+#     return jsonify(ts.model_to_dict(movie))
+
+# # 分页查询
+# @app.route('/movie/get/<int:num>/<int:per>/')
+# def goodslist(num, per):
+#     # 第num页
+#     # 每页显示per行
+#     movie = Movies.query.offset((num - 1) * per).limit(per).all()
+#     return jsonify(ts.model_to_dict(movie))

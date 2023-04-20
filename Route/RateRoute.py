@@ -16,3 +16,11 @@
 #     rate = Ratings.query.all()
 #     # return "查询所有评分信息"
 #     return jsonify(ts.model_to_dict(rate))
+
+# # 分页查询
+# @app.route('/rate/get/<int:num>/<int:per>/')
+# def goodslist(num, per):
+#     # 第num页
+#     # 每页显示per行
+#     rate = Ratings.query.offset((num - 1) * per).limit(per).all()
+#     return jsonify(ts.model_to_dict(rate))

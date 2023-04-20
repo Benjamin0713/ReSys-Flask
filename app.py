@@ -53,7 +53,7 @@ def get_user():
 
 # 分页查询
 @app.route('/user/get/<int:num>/<int:per>/')
-def goodslist(num, per):
+def userslist(num, per):
     # 第num页
     # 每页显示per行
     user = Users.query.offset((num - 1) * per).limit(per).all()
@@ -67,12 +67,29 @@ def get_movie():
     # return "查询所有电影信息"
     return jsonify(ts.model_to_dict(movie))
 
+# 分页查询
+@app.route('/movie/get/<int:num>/<int:per>/')
+def movieslist(num, per):
+    # 第num页
+    # 每页显示per行
+    movie = Movies.query.offset((num - 1) * per).limit(per).all()
+    return jsonify(ts.model_to_dict(movie))
+
 # 查询所有rate信息
 @app.route('/rate/getall')
 def get_rate():
     rate = Ratings.query.all()
     # return "查询所有评分信息"
     return jsonify(ts.model_to_dict(rate))
+
+# 分页查询
+@app.route('/rate/get/<int:num>/<int:per>/')
+def rateslist(num, per):
+    # 第num页
+    # 每页显示per行
+    rate = Ratings.query.offset((num - 1) * per).limit(per).all()
+    return jsonify(ts.model_to_dict(rate))
+
 
 
 if __name__ == '__main__':
