@@ -16,5 +16,5 @@ DB_URI = "mysql+pymysql://{username}:{password}@{host}:{port}/{databasename}?cha
 
 SQLALCHEMY_DATABASE_URI = DB_URI
 SQLALCHEMY_TRACK_MODIFICATIONS = False
-
+SQLALCHEMY_ECHO = True
 # sqlacodegen --outfile "UserModel.py" "mysql+pymysql://syh:123@localhost:3306/recommend?charset=utf8mb4"
