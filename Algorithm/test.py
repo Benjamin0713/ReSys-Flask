@@ -213,6 +213,11 @@ if __name__ == '__main__':
     # for u in user:
     #     for i in range(0,5):
     #         print(u,test[u][i][0])
-    resys_list = open("Resys_result_5.json", "w")
-    json.dump(test,resys_list)
-    resys_list.close()
+    # resys_list = open("Resys_result_5.json", "w")
+    # json.dump(test,resys_list)
+    # resys_list.close()
+    tf = open("Resys_result_5.json", "r")
+    user_recs = json.load(tf)
+
+    user = tuple(user_recs.keys())
+    print(user)

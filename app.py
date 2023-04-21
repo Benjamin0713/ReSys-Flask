@@ -63,7 +63,12 @@ def get_user():
 def userslist(num, per):
     # 第num页
     # 每页显示per行
-    user = Users.query.offset((num - 1) * per).limit(per).all()
+    tf = open("Algorithm/Resys_result_5.json", "r")
+    user_recs = json.load(tf)
+
+    user_list = tuple(user_recs.keys())
+
+    user = Users.query.filter(Users.uid.in_(user_list)).offset((num - 1) * per).limit(per).all()
     return jsonify(ts.model_to_dict(user))
 
 
@@ -115,7 +120,7 @@ def recommend(uid, num):
 
     movie = Movies.query.filter(Movies.mid.in_(resys_item)).all()
 
-    print(movie)
+    # print(movie)
     return jsonify(ts.model_to_dict(movie))
 
 
